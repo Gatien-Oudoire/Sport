@@ -25,15 +25,15 @@ export default function Nutrition() {
                     </div>
                     <div className="card">
                         <h2> Protéines</h2>
-                        <p> Valeur : 125 g </p>
+                        <p> Valeur : {poids * 2} g </p>
                     </div>
                     <div className="card">
                         <h2> Lipides </h2>
-                        <p> Valeur : 62 g </p>
+                        <p> Valeur : {poids} g </p>
                     </div>
                     <div className="card">
                         <h2> Glucides </h2>
-                        <p> Valeur : 186 g </p>
+                        <p> Valeur : {poids * 3} g </p>
                     </div>
                 </div>
             </main>
