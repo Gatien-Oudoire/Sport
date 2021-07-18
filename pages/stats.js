@@ -1,6 +1,5 @@
 import { Line } from "react-chartjs-2";
 import { connectToDatabase } from "../util/mongodb";
-import { trierDate, trierValeur, dans } from "./_date";
 
 const hauteur = 450;
 const largeur = 850;
