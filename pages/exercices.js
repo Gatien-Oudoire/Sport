@@ -10,7 +10,7 @@ export default function Exercices({ listeExos }) {
             </Head>
             <main>
                 <h1 className="title">La liste des exercices:</h1>
-                <div id="lesExercices">
+                <div class="lesExercices">
                     {listeExos.map((exo) => {
                         return (
                             <div className="card">
@@ -21,15 +21,6 @@ export default function Exercices({ listeExos }) {
                     })}
                 </div>
             </main>
-            <style jsx>
-                {`
-                    #lesExercices {
-                        display: flex;
-                        text-align: center;
-                        flex-direction: column;
-                    }
-                `}
-            </style>
         </div>
     );
 }
