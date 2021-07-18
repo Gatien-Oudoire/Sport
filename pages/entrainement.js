@@ -1,9 +1,15 @@
 import Head from "next/head";
 import { connectToDatabase } from "../util/mongodb";
-import { dans } from "./_date";
 
 const TitrePage = "Entrainement";
 var demande = false;
+
+function dans(a, tab) {
+    for (let x = 0; x < tab.length; ++x) {
+        if (a == tab[x]) return true;
+    }
+    return false;
+}
 
 function programme(listeExos) {
     listeExos = Object.values(listeExos);
@@ -30,7 +36,7 @@ export default function Entrainement({ exercices }) {
                     <title>{TitrePage}</title>
                 </Head>
                 <main>
-                    <p>Test</p>
+                    <p>En cours de création</p>
                 </main>
             </>
         );

@@ -43,8 +43,15 @@ footer {
 }
 
 .title {
+    text-align: center;
     color: #577399;
     margin: 0;
     line-height: 1.15;
     font-size: 4rem;
+}
+
+.lesExercices {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
 }
