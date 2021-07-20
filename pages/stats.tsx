@@ -1,5 +1,9 @@
-import { Line } from "react-chartjs-2";
+import { Line, defaults } from "react-chartjs-2";
 import { connectToDatabase } from "../util/mongodb";
+
+interface AppProps {
+    Line?: any
+};
 
 const hauteur = 450;
 const largeur = 850;
@@ -35,7 +39,7 @@ function formaterDate(val) : string {
     return a[2].split("T")[0] + "/" + a[1] + "/" + a[0];
 }
 
-export default function stats({ poids }) {
+export default function stats({ poids }) : Object {
     for (let i = 0; i < poids.length; ++i) {
         dataPoids.labels[i] = formaterDate(poids[i].Date);
         dataPoids.datasets[0].data[i] = parseFloat(poids[i].Valeur);
@@ -43,30 +47,15 @@ export default function stats({ poids }) {
         dataImc.datasets[0].data[i] =
             Math.round((parseFloat(poids[i].Valeur) / 3.2041) * 100) / 100;
     }
-    /*
-    let poidsTab = trierDate(dataPoids.labels);
-    let IMCTab = trierDate(dataImc.labels);
-    console.log(poidsTab);
-    console.log(IMCTab);
-
-    dataPoids.labels = poidsTab[0];
-    dataImc.labels = IMCTab[0];
-
-    dataPoids.datasets[0].data = trierValeur(
-        dataPoids.datasets[0].data,
-        poidsTab[1]
-    );
-    dataImc.datasets[0].data = trierValeur(dataImc.datasets[0].data, IMCTab[1]);
-        */
     return (
         <>
             <h1 className="title"> Les Statistiques</h1>
             <div className="grille">
                 <div className="Poids">
-                    <Line data={dataPoids} height={hauteur} width={largeur} />
+                    <Line type="line" data={dataPoids} height={hauteur} width={largeur} />
                 </div>
                 <div className="Imc">
-                    <Line  data={dataImc} height={hauteur} width={largeur} /> 
+                    <Line type="line" data={dataImc} height={hauteur} width={largeur} /> 
                 </div>
                 <style jsx>{`
                     .grille {
