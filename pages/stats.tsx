@@ -30,7 +30,7 @@ var dataImc = {
     ],
 };
 
-function formaterDate(val) {
+function formaterDate(val) : string {
     let a = val.split("-");
     return a[2].split("T")[0] + "/" + a[1] + "/" + a[0];
 }
@@ -66,7 +66,7 @@ export default function stats({ poids }) {
                     <Line data={dataPoids} height={hauteur} width={largeur} />
                 </div>
                 <div className="Imc">
-                    <Line data={dataImc} height={hauteur} width={largeur} />
+                    <Line  data={dataImc} height={hauteur} width={largeur} /> 
                 </div>
                 <style jsx>{`
                     .grille {

@@ -10,7 +10,7 @@ export default function Exercices({ listeExos }) {
             </Head>
             <main>
                 <h1 className="title">La liste des exercices:</h1>
-                <div class="lesExercices">
+                <div className="lesExercices">
                     {listeExos.map((exo) => {
                         return (
                             <div className="card">

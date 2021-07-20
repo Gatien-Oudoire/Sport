@@ -1,13 +1,14 @@
+//  les variables
 let laDate = new Date();
 let poids = 62;
 let taille = 1.78;
 let age = laDate.getFullYear() - 2004;
 
-const formule = (p, t, a) => {
+const formule  = (p : number , t : number, a : number) : number => {
     return 13.7516 * p + 500.33 * t - 6.755 * a + 66.473;
 };
 
-const metaboBase = formule(poids, taille, age);
+const metaboBase : number = formule(poids, taille, age);
 
 export default function Nutrition() {
     return (

@@ -1,7 +1,8 @@
 import "../style.css";
 import Link from "next/link";
+import type { AppProps} from "next/app";
 
-function MonApp({ Component, pageProps }) {
+function MonApp({ Component, pageProps } : AppProps) {
     return (
         <>
             <Component {...pageProps} />
