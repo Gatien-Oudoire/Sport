@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 //  les variables
 let laDate = new Date();
 let poids = 62;
@@ -38,6 +40,11 @@ export default function Nutrition() {
                     </div>
                 </div>
             </main>
+            <footer>
+                <Link href="/">
+                    <a>Retour à l'accueil</a>
+                </Link>
+            </footer>
         </>
     );
 }
