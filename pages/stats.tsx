@@ -71,7 +71,7 @@ export default function stats({ poids }) : Object {
     );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps() : Promise<Object>{
     const { db } = await connectToDatabase();
 
     const DonnePoids = await db.collection("Poids").find({}).toArray();

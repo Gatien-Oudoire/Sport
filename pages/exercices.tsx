@@ -15,7 +15,7 @@ export default function Exercices({ listeExos }) {
                         return (
                             <div className="card">
                                 <h2>{exo.Nom}</h2>
-                                <p>Difficulté {exo.Difficulte}/5</p>
+                                <p>Difficulté {24 - (exo.Difficulte* 4)}/20</p>
                             </div>
                         );
                     })}
@@ -25,13 +25,13 @@ export default function Exercices({ listeExos }) {
     );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps() : Promise<Object> {
     const { db } = await connectToDatabase();
 
     const exercices = await db
         .collection("Exercice")
         .find({})
-        .sort({ Difficulte: -1 })
+        .sort({ Difficulte: +1 })
         .toArray();
 
     return {

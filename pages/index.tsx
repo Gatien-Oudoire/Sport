@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 
+console.log("salut");
+
 export default function Home() : Object {
     return (
         <div className="container">

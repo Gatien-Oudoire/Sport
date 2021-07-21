@@ -11,12 +11,12 @@ function dans(a : any, tab : Array<any>) : boolean {
   return false;
 }
 
-function programme(listeExos : Array<string>) : Array<string> {
+function programme(listeExos : Array<string>) : Array<any> {
   listeExos = Object.values(listeExos);
   console.log(listeExos);
   let resultat = [];
   let aleatoire;
-  for (let i = 0; i < listeExos.length; ++i) {
+  for (let i = 0; i < Math.round(listeExos.length / 2) + 1; ++i) {
     aleatoire = Math.floor(Math.random() * (listeExos.length - 1));
     while (dans(aleatoire, resultat))
       aleatoire = Math.floor(Math.random() * (listeExos.length - 1));
@@ -28,25 +28,27 @@ function programme(listeExos : Array<string>) : Array<string> {
 
 export default function Entrainement({ exercices }) {
   console.log(programme(exercices));
-  if (!demande)
-    return (
-      <>
-        <Head>
-          <title>{TitrePage}</title>
-        </Head>
-        <main>
-          <p>En cours de création</p>
-        </main>
-      </>
-    );
   return (
+      <>
     <Head>
       <title> {TitrePage}</title>
     </Head>
+
+    <main>
+        {programme(exercices).map( exo => {
+            return (
+                <div className="card">
+                    <h1>{exo.Nom}</h1>
+                    <h3> Répétitions : {(parseInt(exo.Difficulte, 10)**2) + 1}</h3>
+                </div>
+            )
+        })}
+    </main>
+    </>
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(): Promise<Object> {
   const { db } = await connectToDatabase();
 
   const exercices = await db
