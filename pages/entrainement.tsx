@@ -13,7 +13,6 @@ function dans(a : any, tab : Array<any>) : boolean {
 
 function programme(listeExos : Array<string>) : Array<any> {
   listeExos = Object.values(listeExos);
-  console.log(listeExos);
   let resultat = [];
   let aleatoire;
   for (let i = 0; i < Math.round(listeExos.length / 2) + 1; ++i) {
@@ -27,7 +26,6 @@ function programme(listeExos : Array<string>) : Array<any> {
 }
 
 export default function Entrainement({ exercices }) {
-  console.log(programme(exercices));
   return (
       <>
     <Head>
