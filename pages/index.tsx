@@ -6,7 +6,7 @@ export default function Home() : Object {
         <div className="container">
             <Head>
                 <title>Le Sport de Gatien</title>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/logo.png" />
             </Head>
 
             <main>

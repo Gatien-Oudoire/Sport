@@ -7,6 +7,7 @@ export default function Exercices({ listeExos }) {
         <div className="container">
             <Head>
                 <title>Les Exercices</title>
+                <link rel="icon" href="/logo.png"/>
             </Head>
             <main>
                 <h1 className="title">La liste des exercices:</h1>

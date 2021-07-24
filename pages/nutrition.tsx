@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Head from "next/head";
 
 //  les variables
 let laDate = new Date();
@@ -15,6 +16,9 @@ const metaboBase : number = formule(poids, taille, age);
 export default function Nutrition() {
     return (
         <>
+        <Head>
+        <link rel="icon" href="/logo.png"/>
+        </Head>
             <main>
                 <h1 className="title"> Nutrition </h1>
                 <div className="lesExercices">

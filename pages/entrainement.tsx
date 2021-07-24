@@ -53,6 +53,7 @@ export default function Entrainement({ exercices }) {
       <>
     <Head>
       <title> {TitrePage}</title>
+      <link rel="icon" href="/logo.png"/>
     </Head>
     <main>
         <div id="root">
