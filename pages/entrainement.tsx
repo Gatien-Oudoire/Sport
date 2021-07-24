@@ -1,28 +1,51 @@
 import Head from "next/head";
+import ReactDOM from "react-dom";
 import { connectToDatabase } from "../util/mongodb";
 
 const TitrePage = "Entrainement";
-var demande = false;
 
-function dans(a : any, tab : Array<any>) : boolean {
-  for (let x = 0; x < tab.length; ++x) {
-    if (a == tab[x]) return true;
-  }
-  return false;
+class Exercice
+{
+    Difficulte : number;
+    Nom : string;
+    Membres : Array<string>;
+constructor(Nom : string, Difficulte : number, Membres : Array<string> = []) {
+    this.Nom = Nom;
+    this.Difficulte = Difficulte;
+    this.Membres = Membres;
 }
 
-function programme(listeExos : Array<string>) : Array<any> {
-  listeExos = Object.values(listeExos);
-  let resultat = [];
-  let aleatoire;
-  for (let i = 0; i < Math.round(listeExos.length / 2) + 1; ++i) {
-    aleatoire = Math.floor(Math.random() * (listeExos.length - 1));
-    while (dans(aleatoire, resultat))
-      aleatoire = Math.floor(Math.random() * (listeExos.length - 1));
-    resultat[i] = listeExos[aleatoire];
-  }
+}
+
+function genererProgramme(a : Array<any>) : Array<any> {
+
+    /**
+     *  5 niveaux de difficulté
+     *  5 Très Facile
+     *  1 Très dur
+     * */ 
+    let resultat : Array<Object> = [];
+  a = Object.values(a);
+  let listeExercices = [[], [], [], [], []];
+  for (let i = 0; i < a.length; ++i)
+    listeExercices[a[i].Difficulte-1].push(new Exercice(a[i].Nom, a[i].Difficulte));
+
+    for (let i = 1; i < listeExercices.length; ++i)
+    {
+        resultat.push(listeExercices[i][Math.floor(Math.random() * listeExercices[i].length)]);
+    }
 
   return resultat;
+}
+
+function carteExo(exo : Exercice)
+{
+    return (
+    <div className="card">
+        <h1>{exo.Nom}</h1>
+        <p>Reps: {exo.Difficulte**2} </p>
+    </div>
+    )
 }
 
 export default function Entrainement({ exercices }) {
@@ -31,16 +54,10 @@ export default function Entrainement({ exercices }) {
     <Head>
       <title> {TitrePage}</title>
     </Head>
-
     <main>
-        {programme(exercices).map( exo => {
-            return (
-                <div className="card">
-                    <h1>{exo.Nom}</h1>
-                    <h3> Répétitions : {(parseInt(exo.Difficulte, 10)**2) + 1}</h3>
-                </div>
-            )
-        })}
+        <div id="root">
+            {genererProgramme(exercices).map(exo => carteExo(exo))}
+        </div>
     </main>
     </>
   );

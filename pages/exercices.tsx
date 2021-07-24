@@ -11,14 +11,13 @@ export default function Exercices({ listeExos }) {
             <main>
                 <h1 className="title">La liste des exercices:</h1>
                 <div className="lesExercices">
-                    {listeExos.map((exo) => {
-                        return (
-                            <div className="card">
+                    {listeExos.map((exo : any) => (
+                            <div key={exo.id} className="card">
                                 <h2>{exo.Nom}</h2>
                                 <p>Difficulté {24 - (exo.Difficulte* 4)}/20</p>
                             </div>
-                        );
-                    })}
+                        )
+                    )}
                 </div>
             </main>
         </div>

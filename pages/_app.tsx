@@ -10,7 +10,7 @@ function MonApp({ Component, pageProps } : AppProps) {
             <Component {...pageProps} />
             <footer>
                 <Link href="/">
-                    <a>Retour à l'accueil</a>
+                    <a>Retour à l&apos;accueil</a>
                 </Link>
             </footer>
         </>
